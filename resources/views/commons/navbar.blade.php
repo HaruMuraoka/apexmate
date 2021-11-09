@@ -12,7 +12,7 @@
             <ul class="navbar-nav">
                  @if (Auth::check())
                     {{-- グループ作成ページへのリンク --}}
-                    <li class="nav-item"><a href="#" class="nav-link">グループ作成</a></li>
+                    <li class="nav-item">{!! link_to_route('groups.create', 'グループ作成', [], ['class'=>'nav-link']) !!}</li>
                     <li class="nav-item dropdown">
                         <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">{{ Auth::user()->apex_id }}</a>
                         <ul class="dropdown-menu dropdown-menu-right">

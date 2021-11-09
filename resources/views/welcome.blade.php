@@ -3,6 +3,10 @@
 @section('content')
     @if (Auth::check())
         {{ Auth::user()->name }}
+        <div class="col-sm-12">
+            {{-- グループ一覧 --}}
+            @include('groups.groups')
+        </div>
     @else
         <div class="center jumbotron">
             <div class="text-center">

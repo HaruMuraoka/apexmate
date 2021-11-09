@@ -36,4 +36,14 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+    
+    public function groups()
+    {
+        return $this->hasMany(Group::class);
+    }
+    
+    public function loadRelationshipCounts()
+    {
+        $this->loadCount(['chats']);
+    }
 }
