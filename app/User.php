@@ -42,6 +42,11 @@ class User extends Authenticatable
         return $this->hasMany(Group::class);
     }
     
+    public function chats()
+    {
+        return $this->hasMany(Chat::class);
+    }
+    
     public function loadRelationshipCounts()
     {
         $this->loadCount(['chats']);

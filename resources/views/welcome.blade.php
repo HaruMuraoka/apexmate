@@ -3,6 +3,7 @@
 @section('content')
     @if (Auth::check())
         {{ Auth::user()->name }}
+        <h1>グループ一覧</h1>
         <div class="col-sm-12">
             {{-- グループ一覧 --}}
             @include('groups.groups')

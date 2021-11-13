@@ -17,7 +17,7 @@
                     {!! Form::textarea('comment', null, ['class' => 'form-control', 'rows' => '5']) !!}
                 </div>
                 <div class="form-group">
-                    {!! Form::submit('作成', ['class' => 'btn btn-primary btn-block']) !!}
+                    {!! Form::submit('作成', ['class' => 'btn btn-danger btn-block']) !!}
                 </div>
             {!! Form::close() !!}
         </div>

@@ -17,7 +17,7 @@
                         <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">{{ Auth::user()->apex_id }}</a>
                         <ul class="dropdown-menu dropdown-menu-right">
                             {{-- ユーザ設定ページへのリンク --}}
-                            <li class="dropdown-item"><a href="#">ユーザ設定</a></li>
+                            <li class="dropdown-item">{!! link_to_route('users.edit', 'ユーザ設定',['user' => Auth::id()]) !!}</li>
                             <li class="dropdown-divider"></li>
                             {{-- ログアウトへのリンク --}}
                             <li class="dropdown-item">{!! link_to_route('logout.get', 'Logout') !!}</li>

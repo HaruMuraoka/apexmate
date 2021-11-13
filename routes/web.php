@@ -21,5 +21,9 @@ Route::post('login', 'Auth\LoginController@login')->name('login.post');
 Route::get('logout', 'Auth\LoginController@logout')->name('logout.get');
 
 Route::group(['middleware' => ['auth']], function () {
+    Route::resource('users', 'UsersController', ['only' => ['edit','update']]);
+    
     Route::resource('groups', 'GroupsController', ['only' => ['store','create','show']]);
+    
+    Route::resource('chats', 'ChatsController', ['only' => ['index','store']]);
 });

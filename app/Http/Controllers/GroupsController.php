@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 
 use App\Group;
 
+use App\Chat;
+
 
 class GroupsController extends Controller
 {
@@ -50,19 +52,36 @@ class GroupsController extends Controller
             'comment' => $request->comment,
         ]);
 
-        // 前のURLへリダイレクトさせる
+        
         return redirect('/');
     }
     
     public function show($id)
     {
+        $data = [];
+        if (\Auth::check()) { // 認証済みの場合
+            // 認証済みユーザを取得
+            $user = \Auth::user();
+            
+            $user_id= \Auth::id();
+            
+            $group = Group::findOrFail($id);
         
-        $group = Group::findOrFail($id);
-        
-        $name = $group->name;
+            $name = $group->name;
+            
+            $chats = $group->chats()->orderBy('created_at', 'desc')->paginate(20);
 
-        return view('groups.show', [
-            'name' => $name,
-        ]);
+            $data = [
+                'name' => $name,
+                'user' => $user,
+                'chats' => $chats,
+                'group_id' => $id,
+                'user_id' => $user_id,
+                
+            ];
+        
+        
+            return view('groups.show', $data);
+        }
     }
 }
